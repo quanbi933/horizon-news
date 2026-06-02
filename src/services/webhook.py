@@ -348,13 +348,13 @@ class WebhookNotifier:
         if lang == "zh":
             if item_count == 0:
                 return (
-                    f"# Horizon 每日速递 - {date}\n\n"
-                    f"> 已分析 {all_items_count} 条内容，暂无达到重要性阈值的资讯。"
+                    f"# Horizon Bản tin hằng ngày - {date}\n\n"
+                    f"> Đã phân tích {all_items_count} nội dung, chưa có tin nào đạt ngưỡng quan trọng."
                 )
             return (
-                f"# Horizon 每日速递 - {date}\n\n"
-                f"> 从 {all_items_count} 条内容中筛选出 {item_count} 条重要资讯。\n\n"
-                "点击下方新闻面板即可在飞书内展开阅读全文。"
+                f"# Horizon Bản tin hằng ngày - {date}\n\n"
+                f"> Đã chọn {item_count} tin quan trọng từ {all_items_count} nội dung.\n\n"
+                "Nhấn vào từng tin bên dưới để xem chi tiết."
             )
 
         if item_count == 0:
@@ -498,7 +498,7 @@ class WebhookNotifier:
             overview_message = {
                 **base_vars,
                 "message_title": (
-                    f"Horizon {date} 总览"
+                    f"Horizon {date} - Tổng quan"
                     if lang == "zh"
                     else f"Horizon {date} Overview"
                 ),

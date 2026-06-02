@@ -2,7 +2,7 @@
   "version": "1.0",
   "ai": {
     "provider": "openai",
-    "model": "deepseek/deepseek-chat-v3-0324:free",
+    "model": "nvidia/nemotron-3-super-120b-a12b:free",
     "base_url": "https://openrouter.ai/api/v1",
     "api_key_env": "OPENROUTER_API_KEY",
     "temperature": 0.3,
@@ -88,7 +88,7 @@
     }
   },
   "filtering": {
-    "ai_score_threshold": 7.0,
+    "ai_score_threshold": 6.0,
     "time_window_hours": 24
   },
   "webhook": {
