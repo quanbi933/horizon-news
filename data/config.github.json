@@ -7,9 +7,9 @@
     "api_key_env": "OPENROUTER_API_KEY",
     "temperature": 0.3,
     "max_tokens": 4096,
-    "throttle_sec": 3,
-    "analysis_concurrency": 1,
-    "enrichment_concurrency": 1,
+    "throttle_sec": 1,
+    "analysis_concurrency": 3,
+    "enrichment_concurrency": 2,
     "languages": ["zh"]
   },
   "sources": {
@@ -29,7 +29,7 @@
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 15,
+      "fetch_top_stories": 10,
       "min_score": 200
     },
     "rss": [
@@ -38,12 +38,6 @@
         "url": "https://simonwillison.net/atom/everything/",
         "enabled": true,
         "category": "ai"
-      },
-      {
-        "name": "Cointelegraph",
-        "url": "https://cointelegraph.com/rss",
-        "enabled": true,
-        "category": "crypto"
       }
     ],
     "reddit": {
@@ -55,7 +49,7 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 8,
+          "fetch_limit": 6,
           "min_score": 150
         },
         {
@@ -63,7 +57,7 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 8,
+          "fetch_limit": 6,
           "min_score": 300
         }
       ],
