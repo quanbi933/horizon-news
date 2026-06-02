@@ -107,7 +107,8 @@
     "fallback_layout": "markdown",
     "languages": null,
     "request_body": {
-      "content": "#{message_title}\n\n#{summary?limit=1900&split=---}"
+      "chat_id": "${TELEGRAM_CHAT_ID}",
+      "text": "#{message_title}\n\n#{summary?limit=3500&split=---}"
     },
     "headers": ""
   }
