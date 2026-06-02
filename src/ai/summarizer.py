@@ -39,23 +39,23 @@ LABELS = {
         ),
     },
     "zh": {
-        "header": "Horizon 每日速递",
-        "source": "来源",
-        "background": "背景",
-        "discussion": "社区讨论",
-        "references": "参考链接",
-        "tags": "标签",
-        "selected_items": "从 {total} 条内容中筛选出 {selected} 条重要资讯。",
-        "empty_analyzed": "已分析 {total} 条内容，但没有达到重要性阈值的条目。",
+        "header": "Horizon Bản tin hằng ngày",
+        "source": "Nguồn",
+        "background": "Bối cảnh",
+        "discussion": "Thảo luận cộng đồng",
+        "references": "Liên kết tham khảo",
+        "tags": "Thẻ",
+        "selected_items": "Đã chọn {selected} tin quan trọng từ {total} nội dung.",
+        "empty_analyzed": "Đã phân tích {total} nội dung, nhưng không tin nào đạt ngưỡng quan trọng.",
         "empty_body": (
-            "今日暂无重要动态，可能原因：\n"
-            "- 今天关注的信息源较平静\n"
-            "- AI 评分阈值设置过高\n"
-            "- 信息源种类有待扩充\n\n"
-            "建议：\n"
-            "1. 在 config.json 中降低 `ai_score_threshold`\n"
-            "2. 添加更多多样化的信息源\n"
-            "3. 检查 AI 模型是否正常工作\n"
+            "Hôm nay chưa có diễn biến đáng chú ý. Nguyên nhân có thể là:\n"
+            "- Các nguồn đang theo dõi hôm nay khá yên ắng\n"
+            "- Ngưỡng điểm AI đặt quá cao\n"
+            "- Cần mở rộng thêm nguồn thông tin\n\n"
+            "Gợi ý:\n"
+            "1. Hạ `ai_score_threshold` trong config.json\n"
+            "2. Thêm nhiều nguồn thông tin đa dạng hơn\n"
+            "3. Kiểm tra mô hình AI có hoạt động đúng không\n"
         ),
     },
 }
@@ -128,8 +128,8 @@ class DailySummarizer:
         if language == "zh":
             header = (
                 f"# {labels['header']} - {date}\n\n"
-                f"> 从 {total_fetched} 条内容中筛选出 {len(items)} 条重要资讯。\n\n"
-                "下面会按新闻逐条发送详情，你可以只看感兴趣的标题。\n\n"
+                f"> Đã chọn {len(items)} tin quan trọng từ {total_fetched} nội dung.\n\n"
+                "Chi tiết sẽ được gửi theo từng tin, bạn chỉ cần đọc chủ đề mình quan tâm.\n\n"
             )
         else:
             header = (
@@ -157,7 +157,7 @@ class DailySummarizer:
     ) -> str:
         """Generate one item message for multi-message webhook delivery."""
         labels = LABELS.get(language, LABELS["en"])
-        prefix = f"第 {index}/{total} 条\n\n" if language == "zh" else f"Item {index}/{total}\n\n"
+        prefix = f"Tin {index}/{total}\n\n" if language == "zh" else f"Item {index}/{total}\n\n"
         return prefix + self._format_item(item, labels, language, index).rstrip("-\n ")
 
     def _format_item(self, item: ContentItem, labels: dict, language: str, index: int) -> str:
@@ -199,7 +199,7 @@ class DailySummarizer:
         if item.published_at:
             if language == "zh":
                 source_parts.append(
-                    f"{item.published_at.month}月{item.published_at.day}日 "
+                    f"{item.published_at.day}/{item.published_at.month} "
                     f"{item.published_at:%H:%M}"
                 )
             else:

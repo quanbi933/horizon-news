@@ -103,7 +103,7 @@ CONTENT_ENRICHMENT_SYSTEM = """You are a knowledgeable technical writer who help
 
 Given a high-scoring news item, its content, and web search results about the topic, your job is to produce a structured analysis.
 
-Provide EACH text field in BOTH English and Chinese. Use the following key naming convention:
+Provide EACH text field in BOTH English and Vietnamese. Use the following key naming convention (the *_zh keys hold the VIETNAMESE text):
 - title_en / title_zh
 - whats_new_en / whats_new_zh
 - why_it_matters_en / why_it_matters_zh
@@ -126,7 +126,7 @@ Field definitions:
 
 **CRITICAL — Language rules (MUST follow):**
 - All *_en fields MUST be written in English.
-- All *_zh fields MUST be written in Simplified Chinese (简体中文). 绝对不能用英文写 _zh 字段的内容。Only keep technical abbreviations, acronyms, and widely-used proper nouns (e.g. "GPT-4", "CUDA", "Rust") in their original English form; everything else must be Chinese.
+- All *_zh fields MUST be written in natural Vietnamese (tiếng Việt). Never write English in the _zh fields. Only keep technical abbreviations, acronyms, and widely-used proper nouns (e.g. "GPT-4", "CUDA", "Bitcoin", "Ethereum") in their original form; translate everything else into Vietnamese.
 
 Guidelines:
 - EVERY field (except community_discussion when no comments exist) must contain at least one complete sentence — no field may be empty or contain just a phrase
@@ -154,19 +154,19 @@ CONTENT_ENRICHMENT_USER = """Provide a structured bilingual analysis for the fol
 **Web Search Results (for grounding):**
 {web_context}
 
-Respond with valid JSON only. Each _en field must be in English; each _zh field MUST be in Simplified Chinese (中文). Every field MUST be at least one complete sentence (except community_discussion fields when no comments exist):
+Respond with valid JSON only. Each _en field must be in English; each _zh field MUST be in Vietnamese (tiếng Việt). Every field MUST be at least one complete sentence (except community_discussion fields when no comments exist):
 {{
   "title_en": "<short headline in English, ≤15 words>",
-  "title_zh": "<用中文写一个简短标题，不超过15个词>",
+  "title_zh": "<tiêu đề ngắn bằng tiếng Việt, ≤15 từ>",
   "whats_new_en": "<1-2 sentences in English>",
-  "whats_new_zh": "<用中文写1-2句话>",
+  "whats_new_zh": "<1-2 câu bằng tiếng Việt>",
   "why_it_matters_en": "<1-2 sentences in English>",
-  "why_it_matters_zh": "<用中文写1-2句话>",
+  "why_it_matters_zh": "<1-2 câu bằng tiếng Việt>",
   "key_details_en": "<1-2 sentences in English>",
-  "key_details_zh": "<用中文写1-2句话>",
+  "key_details_zh": "<1-2 câu bằng tiếng Việt>",
   "background_en": "<2-4 sentences in English, or empty string>",
-  "background_zh": "<用中文写2-4句话，或空字符串>",
+  "background_zh": "<2-4 câu bằng tiếng Việt, hoặc chuỗi rỗng>",
   "community_discussion_en": "<1-3 sentences in English, or empty string>",
-  "community_discussion_zh": "<用中文写1-3句话，或空字符串>",
+  "community_discussion_zh": "<1-3 câu bằng tiếng Việt, hoặc chuỗi rỗng>",
   "sources": ["<url from search results>", "..."]
 }}"""

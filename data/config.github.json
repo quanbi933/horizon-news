@@ -10,76 +10,70 @@
     "throttle_sec": 3,
     "analysis_concurrency": 1,
     "enrichment_concurrency": 1,
-    "languages": ["en", "zh"]
-  },
-  "email": {
-    "enabled": false
+    "languages": ["zh"]
   },
   "sources": {
     "github": [
       {
         "type": "repo_releases",
-        "owner": "astral-sh",
-        "repo": "uv",
+        "owner": "ollama",
+        "repo": "ollama",
         "enabled": true
       },
       {
         "type": "repo_releases",
-        "owner": "ollama",
-        "repo": "ollama",
+        "owner": "vllm-project",
+        "repo": "vllm",
         "enabled": true
       }
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 20,
-      "min_score": 150
+      "fetch_top_stories": 15,
+      "min_score": 200
     },
     "rss": [
       {
         "name": "Simon Willison",
         "url": "https://simonwillison.net/atom/everything/",
         "enabled": true,
-        "category": "ai-tools"
+        "category": "ai"
+      },
+      {
+        "name": "Cointelegraph",
+        "url": "https://cointelegraph.com/rss",
+        "enabled": true,
+        "category": "crypto"
       }
     ],
     "reddit": {
       "enabled": true,
-      "fetch_comments": 3,
+      "fetch_comments": 0,
       "subreddits": [
-        {
-          "subreddit": "MachineLearning",
-          "enabled": true,
-          "sort": "hot",
-          "time_filter": "day",
-          "fetch_limit": 12,
-          "min_score": 100
-        },
         {
           "subreddit": "LocalLLaMA",
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 12,
-          "min_score": 100
+          "fetch_limit": 8,
+          "min_score": 150
+        },
+        {
+          "subreddit": "CryptoCurrency",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 8,
+          "min_score": 300
         }
       ],
       "users": []
     },
     "telegram": {
-      "enabled": false,
-      "channels": [
-        {
-          "channel": "durov",
-          "enabled": false,
-          "fetch_limit": 20
-        }
-      ]
+      "enabled": false
     },
     "twitter": {
-      "enabled": false,
-      "users": ["karpathy", "ylecun"],
-      "fetch_limit": 10
+      "enabled": false
     },
     "openbb": {
       "enabled": false
@@ -87,10 +81,10 @@
     "ossinsight": {
       "enabled": true,
       "period": "past_24_hours",
-      "languages": ["All", "Python"],
-      "keywords": [],
-      "min_stars": 50,
-      "max_items": 12
+      "languages": ["All"],
+      "keywords": ["llm", "ai", "agent", "crypto", "blockchain"],
+      "min_stars": 80,
+      "max_items": 8
     }
   },
   "filtering": {

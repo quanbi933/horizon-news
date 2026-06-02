@@ -238,15 +238,15 @@ class ContentEnricher:
 
     async def _translate_item(self, item: ContentItem) -> None:
         """Lightweight translation fallback: when full enrichment fails, at least
-        translate the title and summary to Chinese so the item is not dropped."""
+        translate the title and summary to Vietnamese so the item is not dropped."""
         try:
             response = await self.client.complete(
-                system="You are a translator. Translate to Simplified Chinese. Return only valid JSON, no other text.",
+                system="You are a translator. Translate to natural Vietnamese (tiếng Việt). Return only valid JSON, no other text.",
                 user=(
                     f'Title: {item.title}\n'
                     f'Summary: {item.ai_summary or item.title}\n\n'
                     'Return JSON:\n'
-                    '{"title_zh": "<中文标题>", "summary_zh": "<用中文写1-2句摘要>"}'
+                    '{"title_zh": "<tiêu đề bằng tiếng Việt>", "summary_zh": "<1-2 câu tóm tắt bằng tiếng Việt>"}'
                 ),
             )
             result = self._parse_json_response(response)
